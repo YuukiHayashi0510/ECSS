@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:support_company_selection/company_priority/comparison_table.dart';
 import '../authentication/login.dart';
 import '../authentication/mypage.dart';
 import '../ui/topPage.dart';
@@ -13,8 +14,10 @@ class PriorityTopPage extends StatefulWidget {
 class _PriorityTopPageState extends State<PriorityTopPage> {
   final _pages = [LoginPage(), TopPage(), MyPage()];
   int _selectedIndex = 1;
-  List<String> companyKindList = ['大企業', '中小企業', 'ベンチャー・スタートアップ', 'メガベンチャー'];
-  String dropdownValue = '大企業';
+
+  final valueController1 = TextEditingController();
+  final valueController2 = TextEditingController();
+  final valueController3 = TextEditingController();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -32,7 +35,7 @@ class _PriorityTopPageState extends State<PriorityTopPage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text("企業の優先順位"),
+        title: Text("企業名登録画面"),
       ),
       body: Center(
         child: Column(
@@ -46,22 +49,51 @@ class _PriorityTopPageState extends State<PriorityTopPage> {
             ),
             Container(
               width: size.width / 2,
-              child: TextField(),
+              child: Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(hintText: '第1希望'),
+                    controller: valueController1,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: '第2希望'),
+                    controller: valueController2,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: '第3希望'),
+                    controller: valueController3,
+                  ),
+                ],
+              ),
             ),
             Container(
-              width: size.width / 10,
-              child: DropdownButton(
-                  value: dropdownValue,
-                  style: TextStyle(fontSize: 10,color: Colors.black),
-                  items: companyKindList
-                      .map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                        value: value, child: Text(value));
-                  }).toList(),
-                  onChanged: (String? newValue) => setState(() {
-                        dropdownValue = newValue!;
-                      })),
+              margin: EdgeInsets.only(top: 20),
+              child: ElevatedButton(
+                  onPressed: () {
+                    List<String> companyList = [valueController1.text, valueController2.text, valueController3.text];
+                    // firebaseに登録
+                    // ページ遷移
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => PriorityComparisonPage(companyList: companyList,)));
+                  },
+                  child: Text('登録')),
             )
+            // Container(
+            //   width: size.width / 10,
+            //   child: DropdownButton(
+            //       value: dropdownValue,
+            //       style: TextStyle(fontSize: 10,color: Colors.black),
+            //       items: companyKindList
+            //           .map<DropdownMenuItem<String>>((String value) {
+            //         return DropdownMenuItem<String>(
+            //             value: value, child: Text(value));
+            //       }).toList(),
+            //       onChanged: (String? newValue) => setState(() {
+            //             dropdownValue = newValue!;
+            //           })),
+            // )
           ],
         ),
       ),
