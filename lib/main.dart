@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:support_company_selection/diagnose/answer2.dart';
 import 'ui/topPage.dart';
 import 'diagnose/topPage.dart';
 import 'company_priority/topPage.dart';

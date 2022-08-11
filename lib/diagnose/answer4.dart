@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../authentication/login.dart';
+import '../authentication/mypage.dart';
+import '../ui/topPage.dart';
 import 'answer5.dart';
 
 //   ['意志が強い', '活気がある', '人前に出たがらない', '謙虚'],
@@ -16,6 +19,19 @@ class DiagnoseAnswerPage4 extends StatefulWidget {
 }
 
 class _DiagnoseAnswerPage4State extends State<DiagnoseAnswerPage4> {
+  final _pages = [LoginPage(), TopPage(), const MyPage()];
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      Navigator.of(context).push(MaterialPageRoute(
+          settings: const RouteSettings(name: '/home'),
+          builder: (context) {
+            return _pages[_selectedIndex];
+          }));
+    });
+  }
   double _gValue = 0;
 
   void _onRadioSelected(value) => setState(() {
@@ -80,6 +96,16 @@ class _DiagnoseAnswerPage4State extends State<DiagnoseAnswerPage4> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'MyPage'),
+        ],
+        onTap: _onItemTapped,
       ),
     );
   }
