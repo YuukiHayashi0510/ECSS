@@ -14,7 +14,7 @@ class ResultPage extends StatefulWidget {
 }
 
 class _ResultPageState extends State<ResultPage> {
-  final _pages = [LoginPage(), TopPage(title: 'Support'), MyPage()];
+  final _pages = [LoginPage(), TopPage(), MyPage()];
   int _selectedIndex = 1;
 
   @override

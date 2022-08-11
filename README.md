@@ -1,4 +1,4 @@
-# support_companuy_selection
+# Essential Company Selection Support
 
 A new Flutter project.
 

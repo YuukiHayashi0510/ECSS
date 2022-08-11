@@ -4,16 +4,14 @@ import '../authentication/mypage.dart';
 import 'component.dart';
 
 class TopPage extends StatefulWidget {
-  const TopPage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const TopPage({Key? key}) : super(key: key);
 
   @override
   State<TopPage> createState() => _TopPageState();
 }
 
 class _TopPageState extends State<TopPage> {
-  final _pages = [LoginPage(), TopPage(title: 'Support'), MyPage()];
+  final _pages = [LoginPage(), TopPage(), MyPage()];
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
@@ -31,7 +29,7 @@ class _TopPageState extends State<TopPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('ECSS'),
         automaticallyImplyLeading: false,
       ),
       body: Center(

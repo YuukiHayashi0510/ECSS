@@ -12,7 +12,7 @@ class PriorityTopPage extends StatefulWidget {
 }
 
 class _PriorityTopPageState extends State<PriorityTopPage> {
-  final _pages = [LoginPage(), TopPage(title: 'Support'), MyPage()];
+  final _pages = [LoginPage(), TopPage(), MyPage()];
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {

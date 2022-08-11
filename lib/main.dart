@@ -11,17 +11,16 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  final String appName = "Support";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: appName,
+      title: 'ECSS',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new TopPage(title: appName),
+      home: new TopPage(),
       routes: <String, WidgetBuilder> {
-        '/home':(BuildContext context) => new TopPage(title: appName),
+        '/home':(BuildContext context) => new TopPage(),
         '/diagnose': (BuildContext context) => new DiagnoseTopPage(),
         '/diagnose/answer': (BuildContext context) => new DiagnoseAnswerPage(),
         '/priority': (BuildContext context) => new PriorityTopPage(),
