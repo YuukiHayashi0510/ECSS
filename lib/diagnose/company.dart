@@ -61,6 +61,19 @@ class _DiagnoseCompanyPageState extends State<DiagnoseCompanyPage> {
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                       ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 30),
+                      decoration: BoxDecoration(
+                          color: Colors.black12,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          returnExplanationText(widget.param),
+                          style: TextStyle(),
+                        ),
+                      ),
                     )
                   ],
                 ),
@@ -100,4 +113,23 @@ String returnScaleText(String param) {
       break;
   }
   return result;
+}
+
+String returnExplanationText(String param) {
+  String text = '';
+  switch (param) {
+    case 'D':
+      text = 'D型の人は、メガベンチャーの\n成果思考、チャレンジ精神と\nマッチしており、適性があります';
+      break;
+    case 'I':
+      text = 'I型の人は、ベンチャー・スタートアップの和気藹々とした空気感とマッチしており、適性があります';
+      break;
+    case 'S':
+      text = 'S型の人は、大企業の福利厚生、\n企業成長等、安定的な特性とマッチしており、\n適性があります';
+      break;
+    case 'C':
+      text = 'C型の人は、中小企業の慎重さ、\n系統的な姿勢とマッチしており、\n適性があります';
+      break;
+  }
+  return text;
 }
