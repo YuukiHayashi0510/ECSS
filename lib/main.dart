@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:support_company_selection/diagnose/answer2.dart';
 import 'ui/topPage.dart';
 import 'diagnose/topPage.dart';
 import 'company_priority/topPage.dart';
@@ -18,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       home: new TopPage(),
       routes: <String, WidgetBuilder> {
         '/home':(BuildContext context) => new TopPage(),

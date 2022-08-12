@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../authentication/login.dart';
 import '../authentication/mypage.dart';
-import 'component.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);

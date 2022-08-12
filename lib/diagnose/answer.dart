@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:support_company_selection/diagnose/answer2.dart';
 
+import '../authentication/login.dart';
+import '../authentication/mypage.dart';
+import '../ui/topPage.dart';
+
 // List<List> selectList = [
 //   ['成果思考', '熱意のある', '感情を表に出さない', '順応的'],
 //   ['断固とした', '楽観的', '緻密', '忍耐強い'],
@@ -16,6 +20,21 @@ class DiagnoseAnswerPage extends StatefulWidget {
 }
 
 class _DiagnoseAnswerPageState extends State<DiagnoseAnswerPage> {
+
+  final _pages = [LoginPage(), TopPage(), const MyPage()];
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      Navigator.of(context).push(MaterialPageRoute(
+          settings: const RouteSettings(name: '/home'),
+          builder: (context) {
+            return _pages[_selectedIndex];
+          }));
+    });
+  }
+
   double _gValue = 0;
 
   void _onRadioSelected(value) => setState(() {
@@ -76,6 +95,16 @@ class _DiagnoseAnswerPageState extends State<DiagnoseAnswerPage> {
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'MyPage'),
+        ],
+        onTap: _onItemTapped,
       ),
     );
   }
