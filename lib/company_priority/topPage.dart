@@ -70,6 +70,7 @@ class _PriorityTopPageState extends State<PriorityTopPage> {
               margin: EdgeInsets.only(top: 20),
               child: ElevatedButton(
                   onPressed: () {
+                    if(valueController1.text.length ==0 || valueController2.text.length==0||valueController3.text.length==0) return;
                     List<String> companyList = [valueController1.text, valueController2.text, valueController3.text];
                     // firebaseに登録
                     // ページ遷移
